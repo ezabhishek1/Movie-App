@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.hero { 
+    background-image: url('/oppenheirmer.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: darken;
+    backdrop-filter: opacity(30%);
+}
+
+
+.story {
+    background-image: url('/3-idiots-food.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: darken;
+    backdrop-filter: opacity(30%);
+}
