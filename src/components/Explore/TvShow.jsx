@@ -29,7 +29,7 @@ function TvShow() {
             <h1 className="text-2xl">Explore Tv Shows</h1>
             <br />
             <div className='grid grid-cols-6 gap-4 mx-10'>
-                {data?.slice(0, limit).map((movie, index) => {
+                {data?.results?.slice(0, limit).map((movie, index) => {
                     return <MovieCard
                         id={movie.id}
                         overview={movie.overview}

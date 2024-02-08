@@ -3,7 +3,7 @@ import TvShow from "../components/Explore/TvShow"
 
 function Explore() {
     return (
-        <div>
+        <div className="dark:bg-gray-900">
             <Movies />
             <TvShow />
         </div>

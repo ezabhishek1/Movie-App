@@ -14,7 +14,7 @@ export default function useFetch(url) {
                     },
                 });
                 const data = await response.json();
-                setData(data.results);
+                setData(data);
             } catch (error) {
                 setError(error);
             } finally {

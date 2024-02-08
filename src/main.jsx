@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 import LandingPage from './pages/LandingPage.jsx';
 import Explore from './pages/Explore.jsx';
+import DetailedMovie from './pages/DetailedMovie.jsx';
+import NavBar from './components/common/NavBar.jsx';
 
 const router = createBrowserRouter([
   {
@@ -16,12 +18,17 @@ const router = createBrowserRouter([
   {
     path: "/explore",
     element: <Explore />,
+  },
+  {
+    path: "/movies/:movieid",
+    element: <DetailedMovie />
   }
 ]);
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <NavBar />
     <RouterProvider router={router} />
   </React.StrictMode>,
 )

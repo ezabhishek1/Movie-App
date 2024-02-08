@@ -26,11 +26,11 @@ function Movies() {
 
     // we need to do an api call here :)
     return (
-        <div>
-            <h1 className="text-2xl">Explore Movies</h1>
+        <div className='pt-10'>
+            <h1 className="text-4xl dark:text-white text-center">Explore Movies</h1>
             <br />
-            <div className='grid grid-cols-6 gap-4 mx-10'>
-                {data.slice(0, limit).map((movie, index) => {
+            <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-10 justify-items-center'>
+                {data ? data?.results?.slice(0, limit).map((movie, index) => {
                     return <MovieCard
                         id={movie.id}
                         overview={movie.overview}
@@ -39,14 +39,7 @@ function Movies() {
                         title={movie.title}
                         key={index}
                     />
-                })}
-                <MovieCard
-                    id={"wef wef edfs"}
-                    overview={"Explore more movies"}
-                    popularity={"Explore Now"}
-                    poster_path={"https://image.tmdb.org/t/p/w500/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg"}
-                    title={"CineMate"}
-                />
+                }) : <span>data not feteched from backend</span>}
             </div>
             <br />
             <div className='flex justify-center items-center'>
