@@ -5,7 +5,7 @@ import MovieCard from '../common/MovieCard'
 
 function Movies() {
     const { data, loading, error } = useFetch("/movie/popular")
-    const [limit, setLimit] = useState(11)
+    const [limit, setLimit] = useState(4)
 
 
     if (loading) {
@@ -44,6 +44,7 @@ function Movies() {
             <br />
             <div className='flex justify-center items-center'>
                 <button
+                    className='px-5 py-3 bg-green-500 rounded-2xl'
                     onClick={() => setLimit(limit + 6)}
                 >Load More</button>
             </div>

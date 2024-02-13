@@ -15,6 +15,7 @@ function NavBar() {
                 <h1 className="text-blue-700 dark:text-white text-4xl">CineMate.</h1>
             </div>
             <div className="flex justify-center items-center gap-10 text-black dark:text-white text-xl">
+                <a href="/explore">Explore</a>
                 <a href="/movies">Movies</a>
                 <a href="/tv">Tv Shows</a>
                 <a href="/people">People</a>

@@ -4,7 +4,7 @@ import MovieCard from '../common/MovieCard'
 
 function TvShow() {
     const { data, loading, error } = useFetch("/tv/popular")
-    const [limit, setLimit] = useState(6)
+    const [limit, setLimit] = useState(4)
 
 
     if (loading) {
@@ -43,6 +43,7 @@ function TvShow() {
             <br />
             <div className='flex justify-center items-center'>
                 <button
+                    className='px-5 py-3 bg-green-500 rounded-2xl'
                     onClick={() => setLimit(limit + 6)}
                 >Load More</button>
             </div>

@@ -20,3 +20,10 @@
     background-blend-mode: darken;
     backdrop-filter: opacity(30%);
 }
+
+
+.banner {
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: brightness(50%);
+}
