@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import LandingPage from './pages/LandingPage.jsx';
 import Explore from './pages/Explore.jsx';
+import MovieExplore from './pages/MovieExplore.jsx';
 import DetailedMovie from './pages/DetailedMovie.jsx';
 import NavBar from './components/common/NavBar.jsx';
 
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
     element: <Explore />,
   },
   {
+    path: "/movies",
+    element: <MovieExplore />,
+  },
+  {
     path: "/movies/:movieid",
     element: <DetailedMovie />
   }
@@ -27,7 +32,7 @@ const router = createBrowserRouter([
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <React.StrictMode >
     <NavBar />
     <RouterProvider router={router} />
   </React.StrictMode>,
