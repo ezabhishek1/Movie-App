@@ -26,6 +26,7 @@ function SearchBar({ path, setData }) {
         <div className='flex justify-center items-center gap-3'>
             <input type="text"
                 value={search}
+                className=' border-blue-500 focus:outline-green-500 outline-none border-2 px-3 py-1 rounded-full w-1/2'
                 onChange={(e) => SetSearch(e.target.value)} />
             <button
                 onClick={fetchData}
