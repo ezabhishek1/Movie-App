@@ -1,18 +1,17 @@
 import { useParams } from 'react-router-dom';
-import useFetch from '../hooks/useFetch';
-import { Loader, Dot, BadgeDollarSign } from 'lucide-react';
-import { getDate, getLongDate, getYear, playTime } from '../libs/DateFormatter';
+import useFetch from '../../hooks/useFetch';
+import TvshowCard from '../../components/common/TvshowCard';
+import { Loader, Dot, BadgeDollarSign } from "lucide-react"
+import { getDate, getYear, playTime } from '../../libs/DateFormatter';
 
-import MovieCard from '../components/common/MovieCard';
+function TvDetails() {
 
-function DetailedMovie() {
 
-    let { movieid } = useParams();
+    let { tvshowid } = useParams();
 
-    // eslint-disable-next-line no-undef
-    const { data, loading, error } = useFetch(`/movie/${movieid}`)
+    const { data, loading, error } = useFetch(`/tv/${tvshowid}`)
 
-    const { data: similardata, loading: sloading, error: serror } = useFetch(`/movie/${movieid}/similar`)
+    const { data: similardata, loading: sloading, error: serror } = useFetch(`/tv/${tvshowid}/similar`)
 
 
     if (loading || sloading) {
@@ -37,9 +36,9 @@ function DetailedMovie() {
     }
 
 
-    if (!data?.success === false || !similardata?.success === false) {
+    if (data?.success === false || similardata?.success === false) {
         return (
-            <div>
+            <div className='flex justify-center items-center h-svh'>
                 <h1>{data?.status_message} || {similardata?.status_message}</h1>
             </div>
         )
@@ -47,7 +46,7 @@ function DetailedMovie() {
 
 
     return (
-        <div className='dark:bg-gray-900'>
+        <div className='dark:bg-gray-900 bg-slate-300 min-h-screen dark:text-white text-black'>
             <div
                 className='h-[750px] bg-gray-900  flex gap-3 justify-start items-start banner'>
 
@@ -64,13 +63,11 @@ function DetailedMovie() {
 
                     <div className='z-10'>
                         <h1 className='text-6xl '>
-                            {data.title} <span className='text-gray-500 text-5xl'>({getYear(data.release_date)})</span>
+                            {data.name} <span className='text-gray-500 text-5xl'>({getYear(data.first_air_date)} - {getYear(data.last_air_date)})</span>
                         </h1>
-                        <span className='text-xl flex justify-start items-center mt-2'>{data.tagline}
-
-                            <Dot />
+                        <span className='text-xl flex justify-start items-center mt-2'>
                             <span>
-                                {playTime(data.runtime)}
+                                Last Realsed on :{getDate(data.last_air_date)}
                             </span>
                         </span>
 
@@ -97,15 +94,13 @@ function DetailedMovie() {
                             <span>{data.status}</span>
                             <h3 className='text-2xl mt-2'>Original Language</h3>
                             <span>{data.spoken_languages[0].name}</span>
-                            <h3 className='text-2xl mt-2'>Budget</h3>
+                            <h3 className='text-2xl mt-2'>Seasons</h3>
                             <span className='flex gap-2 items-center justify-start'>
-                                <BadgeDollarSign />
-                                {data.budget}
+                                {data.number_of_seasons}
                             </span>
-                            <h3 className='text-2xl mt-2'>Revenue</h3>
+                            <h3 className='text-2xl mt-2'>Episodes</h3>
                             <span className='flex gap-2 items-center justify-start'>
-                                <BadgeDollarSign className={`${data.revenue > data.budget ? "text-green-500" : "text-red-500"}`} />
-                                {data.revenue}
+                                {data.number_of_episodes}
                             </span>
                         </div>
                     </div>
@@ -113,10 +108,10 @@ function DetailedMovie() {
             </div >
 
 
-            <h2 className='text-center my-10 dark:text-white text-6xl font-bold'>Similar Movies you Might Love</h2>
-            <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-10 justify-items-center '>
+            <h2 className='text-center my-10 dark:text-white text-6xl font-bold'>Similar Tv Shows you Might Love</h2>
+            <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-1 mx-5 justify-items-center '>
                 {similardata && similardata.results.map((movie, index) => {
-                    return <MovieCard
+                    return <TvshowCard
                         id={movie.id}
                         overview={movie.overview}
                         popularity={movie.popularity}
@@ -130,4 +125,4 @@ function DetailedMovie() {
     )
 }
 
-export default DetailedMovie
+export default TvDetails

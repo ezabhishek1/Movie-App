@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import useFetch from '../../hooks/useFetch'
 import MovieCard from '../common/MovieCard'
-
+import { Loader } from 'lucide-react'
 
 function Movies() {
     const { data, loading, error } = useFetch("/movie/popular")
@@ -10,8 +10,8 @@ function Movies() {
 
     if (loading) {
         return (
-            <div>
-                <h1>Loading...</h1>
+            <div className='h-screen bg-gray-500 dark:bg-black flex justify-center items-center'>
+                <Loader className='animate-spin dark:text-white h-10 w-10' />
             </div>
         )
     }

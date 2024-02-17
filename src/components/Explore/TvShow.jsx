@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import useFetch from '../../hooks/useFetch'
-import MovieCard from '../common/MovieCard'
+import TvshowCard from '../common/TvshowCard'
+import { Loader } from 'lucide-react'
+
 
 function TvShow() {
     const { data, loading, error } = useFetch("/tv/popular")
@@ -9,8 +11,8 @@ function TvShow() {
 
     if (loading) {
         return (
-            <div>
-                <h1>Loading...</h1>
+            <div className='h-screen bg-gray-500 dark:bg-black flex justify-center items-center'>
+                <Loader className='animate-spin dark:text-white h-10 w-10' />
             </div>
         )
     }
@@ -25,12 +27,12 @@ function TvShow() {
 
     // we need to do an api call here :)
     return (
-        <div>
-            <h1 className="text-2xl">Explore Tv Shows</h1>
+        <div className='pt-10'>
+            <h1 className="text-4xl dark:text-white text-center">Explore Tv Shows</h1>
             <br />
-            <div className='grid grid-cols-6 gap-4 mx-10'>
+            <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-10 justify-items-center'>
                 {data?.results?.slice(0, limit).map((movie, index) => {
-                    return <MovieCard
+                    return <TvshowCard
                         id={movie.id}
                         overview={movie.overview}
                         popularity={movie.popularity}

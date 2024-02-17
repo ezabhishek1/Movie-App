@@ -1,6 +1,6 @@
-import MovieCard from './../components/common/MovieCard.jsx'
-import useFetch from './../hooks/useFetch.jsx'
-import SearchBar from '../components/common/SearchBar.jsx'
+import MovieCard from '../../components/common/MovieCard.jsx'
+import useFetch from '../../hooks/useFetch.jsx'
+import SearchBar from '../../components/common/SearchBar.jsx'
 import { useState, useEffect } from 'react'
 
 function MovieExplore() {
