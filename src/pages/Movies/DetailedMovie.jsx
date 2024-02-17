@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
-import { Loader, Dot, BadgeDollarSign } from 'lucide-react';
+import { Loader, Dot, BadgeDollarSign, Share2 } from 'lucide-react';
 import { getDate, getLongDate, getYear, playTime } from '../../libs/DateFormatter';
 
 import MovieCard from '../../components/common/MovieCard';
@@ -14,6 +14,13 @@ function DetailedMovie() {
 
     const { data: similardata, loading: sloading, error: serror } = useFetch(`/movie/${movieid}/similar`)
 
+
+
+    function handlecopy() {
+        navigator.clipboard.writeText(window.location.href)
+            .then(() => alert("Link copied to clipboard!"))
+            .catch(() => alert("Failed to copy link to clipboard!"));
+    }
 
     if (loading || sloading) {
         return (
@@ -56,16 +63,24 @@ function DetailedMovie() {
                         className='object-contain w-full opacity-25 blur-sm  saturate-200'
                     />
                 </div>
-                <img src={`${import.meta.env.VITE_CDN_KEY}${data.poster_path}`}
+                {data.poster_path ? <img src={`${import.meta.env.VITE_CDN_KEY}${data.poster_path}`}
                     className='object-cover w-[550px] h-full'
-                />
+                /> :
+                    <img src="https://cdn3.vectorstock.com/i/1000x1000/51/87/404-page-not-found-banner-error-design-vector-21065187.jpg" className='object-cover w-[550px] h-full' />
+                }
+
 
                 <div className='text-white mt-10 relative '>
 
                     <div className='z-10'>
-                        <h1 className='text-6xl '>
-                            {data.title} <span className='text-gray-500 text-5xl'>({getYear(data.release_date)})</span>
-                        </h1>
+                        <div className='flex justify-between items-center '>
+                            <h1 className='text-6xl '>
+                                {data.title} <span className='text-gray-500 text-5xl'>({getYear(data.release_date)})</span>
+                            </h1>
+                            <span className='mr-24 cursor-pointer bg-gray-800 h-10 w-10 rounded-full flex justify-center items-center'>
+                                <Share2 onClick={handlecopy} />
+                            </span>
+                        </div>
                         <span className='text-xl flex justify-start items-center mt-2'>{data.tagline}
 
                             <Dot />

@@ -12,7 +12,7 @@ function NavBar() {
             </div>
             <div className="flex justify-center items-center gap-10 text-black dark:text-white text-xl">
                 <a href="/explore">Explore</a>
-                <a href="/movies">Movies</a>
+                <a href="/movies?page=1">Movies</a>
                 <a href="/tvshow">Tv Shows</a>
                 <a href="/people">People</a>
                 <a href="/anime">Anime</a>

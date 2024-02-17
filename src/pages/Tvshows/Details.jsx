@@ -55,10 +55,11 @@ function TvDetails() {
                         className='object-contain w-full opacity-25 blur-sm  saturate-200'
                     />
                 </div>
-                <img src={`${import.meta.env.VITE_CDN_KEY}${data.poster_path}`}
+                {data.poster_path ? <img src={`${import.meta.env.VITE_CDN_KEY}${data.poster_path}`}
                     className='object-cover w-[550px] h-full'
-                />
-
+                /> :
+                    <img src="https://cdn3.vectorstock.com/i/1000x1000/51/87/404-page-not-found-banner-error-design-vector-21065187.jpg" className='object-cover w-[550px] h-full' />
+                }
                 <div className='text-white mt-10 relative '>
 
                     <div className='z-10'>
